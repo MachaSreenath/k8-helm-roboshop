@@ -4,9 +4,9 @@ metadata:
   name: redis
   namespace: mynamespace
   labels:
-    app: redis
-    project: roboshop
-    tier: db
+    component: redis
+    website: roboshop
+    source: laptop
 spec:
   ports:
   - protocol: TCP
@@ -14,6 +14,6 @@ spec:
     targetPort: 6379
   clusterIP: None
   selector:
-    app: redis
-    project: roboshop
-    tier: db
+    component: redis
+    website: roboshop
+    source: laptop

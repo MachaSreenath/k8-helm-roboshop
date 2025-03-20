@@ -4,23 +4,23 @@ metadata:
   name: mongodb
   namespace: mynamespace
   labels:
-    app: mongodb
-    project: roboshop
-    tier: db
+    component: mongodb
+    website: roboshop
+    source: laptop
 spec:
   selector:
     matchLabels:
-      app: mongodb
-      project: roboshop
-      tier: db
+      component: mongodb
+      website: roboshop
+      source: laptop
   serviceName: "mongodb"
   replicas: {{ .Values.statefulset.replicas }}
   template:
     metadata:
       labels:
-        app: mongodb
-        project: roboshop
-        tier: db
+        component: mongodb
+        website: roboshop
+        source: laptop
     spec:
       containers:
       - name: mongodb

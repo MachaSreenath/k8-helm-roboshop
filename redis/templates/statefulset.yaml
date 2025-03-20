@@ -4,23 +4,23 @@ metadata:
   name: redis
   namespace: mynamespace
   labels:
-    app: redis
-    project: roboshop
-    tier: db
+    component: redis
+    website: roboshop
+    source: laptop
 spec:
   selector:
     matchLabels:
-      app: redis
-      project: roboshop
-      tier: db
+      component: redis
+      website: roboshop
+      source: laptop
   serviceName: "redis"
   replicas: {{ .Values.statefulset.replicas }}
   template:
     metadata:
       labels:
-        app: redis
-        project: roboshop
-        tier: db
+        component: redis
+        website: roboshop
+        source: laptop
     spec:
       containers:
       - name: redis
