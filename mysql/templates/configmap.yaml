@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql
+  namespace: mynamespace
+data:
+  MYSQL_DATABASE: "cities"
