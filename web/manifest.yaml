@@ -161,7 +161,7 @@ metadata:
   name: web
   namespace: mynamespace
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     component: web
     website: roboshop
