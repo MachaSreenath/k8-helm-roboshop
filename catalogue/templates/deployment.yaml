@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue
+  namespace: mynamespace
+  labels:
+    component: catalogue
+    website: roboshop
+    source: laptop
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      component: catalogue
+      website: roboshop
+      source: laptop
+  template:
+    metadata:
+      labels:
+        component: catalogue
+        website: roboshop
+        source: laptop
+    spec:
+      containers:
+      - name: catalogue
+        image: "sreenathsri/catalogue:{{ .Values.deployment.imageVersion }}"
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "128Mi"
+          limits:
+            cpu: "100m"
+            memory: "256Mi"
+        envFrom:
+        - configMapRef:
+            name: catalogue
