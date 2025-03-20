@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+  namespace: roboshop
+  labels:
+    component: shipping
+    website: roboshop
+    source: laptop
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      component: shipping
+      website: roboshop
+      source: laptop
+  template:
+    metadata:
+      labels:
+        component: shipping
+        website: roboshop
+        source: laptop
+    spec:
+      containers:
+      - name: shipping
+        image: "sreenathsri/shipping:{{ .Values.deployment.imageVersion }}"
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "150m"
+            memory: "256Mi"
+          limits:
+            cpu: "300m"
+            memory: "512Mi"
+        envFrom:
+        - configMapRef:
+            name: shipping
